@@ -1,0 +1,15 @@
+services:
+  rent-db:
+    image: postgres:9.6
+    environment:
+      LANG: en_US.utf8
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: rent-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - rent-db-data:/var/lib/postgresql/data
+
+volumes:
+  rent-db-data: null
