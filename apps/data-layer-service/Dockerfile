@@ -24,7 +24,7 @@ RUN npm ci --only=production
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/apps/data-layer-service/src/assets ./apps/data-layer-service/src/assets
 
-COPY entrypoint.sh ./entrypoint.sh
+COPY /app/apps/data-layer-service/entrypoint.sh ./entrypoint.sh
 RUN chmod +x entrypoint.sh
 
 ENV NODE_ENV=production
