@@ -5,12 +5,8 @@
   "scripts": {
     "migration:generate": "typeorm migration:create ./apps/data-layer-service/src/migrations/InitMigration",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d apps/data-layer-service/src/app/shared/config/data-source.config.ts",
-
     "rent-api:build": "nx run rent-api:build",
-    "rent-api:start": "node dist/apps/rent-api/main.js",
-
-    "data-layer-service:build": "nx run data-layer-service:build",
-    "data-layer-service:start": "node dist/apps/data-layer-service/main.js"
+    "data-layer-service:build": "nx run data-layer-service:build"
   },
   "private": true,
   "dependencies": {
