@@ -21,6 +21,7 @@ RUN npm ci --only=production
 
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/apps/data-layer-service/src/assets ./apps/data-layer-service/src/assets
+COPY --from=builder /app/apps/data-layer-service/src/app/shared/config/data-source.config.ts ./apps/data-layer-service/src/app/shared/config/data-source.config.ts
 
 COPY apps/data-layer-service/entrypoint.sh ./entrypoint.sh
 RUN chmod +x entrypoint.sh
