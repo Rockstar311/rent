@@ -9,8 +9,6 @@ RUN npm ci
 COPY . .
 
 RUN npm run data-layer-service:build
-RUN npm run migration:run
-
 
 # === STAGE 2: production ===
 FROM node:22.15.0
