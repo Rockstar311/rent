@@ -13,6 +13,9 @@ export default new DataSource({
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  ssl: {
+    rejectUnauthorized: false
+  },
   entities: [],
   synchronize: false,
   migrationsTableName: 'Migrations',
