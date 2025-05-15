@@ -24,8 +24,7 @@
       "dependsOn": ["build"],
       "options": {
         "buildTarget": "data-layer-service:build",
-        "runBuildTargetDependencies": false,
-        "watch": true
+        "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {

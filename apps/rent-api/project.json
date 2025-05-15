@@ -24,8 +24,7 @@
       "dependsOn": ["build"],
       "options": {
         "buildTarget": "rent-api:build",
-        "runBuildTargetDependencies": false,
-        "watch": true
+        "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
