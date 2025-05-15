@@ -12,6 +12,7 @@ export class PropertyRetrieverClient implements PropertyRetrieverContract {
   public async get(
     requestDto: RetrievePropertyQueryDto
   ): Promise<RetrievePropertyResponseDto> {
+    console.log(requestDto);
     return this.client.send<RetrievePropertyResponseDto>(
       PropertyPattern.GetProperties,
       requestDto

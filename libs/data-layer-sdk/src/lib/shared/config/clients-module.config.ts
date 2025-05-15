@@ -7,7 +7,8 @@ export const CLIENT_MODULE_CONFIG = ClientsModule.register([
     name: CLIENT_MODULE_NAME,
     transport: Transport.TCP,
     options: {
-      port: +process.env['DATA_LAYER_PORT']! || 3000,
+      host: process.env['DATA_LAYER_HOST'],
+      port: +process.env['DATA_LAYER_PORT']!,
     },
   },
 ])
