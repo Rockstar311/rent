@@ -6,6 +6,7 @@
     "migration:generate": "typeorm migration:create ./apps/data-layer-service/src/migrations/InitMigration",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d apps/data-layer-service/src/app/shared/config/data-source.config.ts",
     "rent-api:build": "nx run rent-api:build",
+    "rent-api:serve": "nx run rent-api:serve",
     "data-layer-service:build": "nx run data-layer-service:build"
   },
   "private": true,
