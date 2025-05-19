@@ -1,10 +1,7 @@
+import * as dotenv from 'dotenv';
 import { DataSource } from 'typeorm';
 
-console.log({
-  DB_HOST: process.env.DB_HOST,
-  DB_NAME: process.env.DB_NAME,
-  DB_USER: process.env.DB_USER,
-});
+dotenv.config({ path: './apps/data-layer-service/.env' });
 
 export default new DataSource({
   type: 'postgres',
@@ -13,9 +10,6 @@ export default new DataSource({
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  ssl: {
-    rejectUnauthorized: false
-  },
   entities: [],
   synchronize: false,
   migrationsTableName: 'Migrations',
