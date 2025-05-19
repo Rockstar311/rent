@@ -1,4 +1,13 @@
 services:
+  rent-api:
+    build:
+      context: .
+      dockerfile: apps/rent-api/Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - apps/rent-api/.env
+
   rent-db:
     image: postgres:9.6
     environment:
