@@ -18,6 +18,8 @@ services:
       - NODE_ENV=production
     depends_on:
       - rent-db
+    env_file:
+      - apps/data-layer-service/.env
 
   rent-db:
     image: postgres:9.6
