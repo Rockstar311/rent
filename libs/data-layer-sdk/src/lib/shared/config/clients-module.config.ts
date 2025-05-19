@@ -2,6 +2,8 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 
 export const CLIENT_MODULE_NAME = 'DATA_LAYER_SERVICE'
 
+console.log(process.env['DATA_LAYER_HOST']);
+
 export const CLIENT_MODULE_CONFIG = ClientsModule.register([
   {
     name: CLIENT_MODULE_NAME,
