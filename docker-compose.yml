@@ -5,8 +5,19 @@ services:
       dockerfile: apps/rent-api/Dockerfile
     ports:
       - "3000:3000"
+    depends_on:
+      - data-layer
     env_file:
       - apps/rent-api/.env
+
+  data-layer:
+    build:
+      context: .
+      dockerfile: apps/data-layer-service/Dockerfile
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - rent-db
 
   rent-db:
     image: postgres:9.6
