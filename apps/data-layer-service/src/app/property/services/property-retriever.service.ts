@@ -4,8 +4,10 @@ import { Property } from '../entities/property.entity';
 import { Repository } from 'typeorm';
 import { PropertyMapper } from '../mappers/property.mapper';
 import { paginate } from 'nestjs-typeorm-paginate';
-import { RetrievePropertyQueryDto } from '@rent/data-layer-sdk/property/dto/retrieve-property-query.dto';
+import { RetrievePropertyRequestDto } from '@rent/data-layer-sdk/property/dto/retrieve-property-request.dto';
 import { RetrievePropertyResponseDto } from '@rent/data-layer-sdk/property/dto/retrieve-property-response.dto';
+import { RetrievePropertyResponseMetaContract } from '@rent/data-layer-sdk/property/contracts/retrieve-property-response-meta.contract';
+import { PropertySearchSpecification } from '../specifications/property-search.specification';
 
 @Injectable()
 export class PropertyRetrieverService {
@@ -16,16 +18,19 @@ export class PropertyRetrieverService {
   ) {}
 
   public async get(
-    requestDto: RetrievePropertyQueryDto
+    requestDto: RetrievePropertyRequestDto
   ): Promise<RetrievePropertyResponseDto> {
-    const result = await paginate<Property>(
-      this.propertyRepository,
-      requestDto
+    const specification = new PropertySearchSpecification(requestDto);
+
+    const queryBuilder = specification.toQueryBuilder(
+      this.propertyRepository.createQueryBuilder('property')
     );
+
+    const result = await paginate<Property>(queryBuilder, requestDto);
 
     return new RetrievePropertyResponseDto(
       this.propertyMapper.toDtos(result.items),
-      result.meta,
+      result.meta as RetrievePropertyResponseMetaContract,
       result.links
     );
   }

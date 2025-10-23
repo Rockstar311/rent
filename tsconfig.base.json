@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@rent/data-layer-sdk/*": ["libs/data-layer-sdk/src/lib/*"],
+      "@rent/data-layer-sdk/*": ["libs/data-layer-sdk/src/lib/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

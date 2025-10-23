@@ -1,6 +1,7 @@
 import { Expose } from 'class-transformer';
+import { PropertyContract } from '../contracts/property.contract';
 
-export class PropertyDto {
+export class PropertyDto implements PropertyContract {
   @Expose()
   public id: number;
 

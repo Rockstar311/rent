@@ -5,17 +5,21 @@ export default [
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
   {
-    ignores: ['**/dist'],
+    ignores: [
+      '**/dist',
+      '**/vite.config.*.timestamp*',
+      '**/vitest.config.*.timestamp*',
+    ],
   },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
     rules: {
       'max-len': [
-        "error",
+        'error',
         {
-          "code": 140,
-          "ignorePattern": "^import .*"
-        }
+          code: 140,
+          ignorePattern: '^import .*',
+        },
       ],
       '@nx/enforce-module-boundaries': [
         'error',

@@ -1,6 +1,6 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { PropertyRetrieverService } from '../services/property-retriever.service';
-import { RetrievePropertyQueryDto } from '@rent/data-layer-sdk/property/dto/retrieve-property-query.dto';
+import { RetrievePropertyRequestDto } from '@rent/data-layer-sdk/property/dto/retrieve-property-request.dto';
 import { RetrievePropertyResponseDto } from '@rent/data-layer-sdk/property/dto/retrieve-property-response.dto';
 
 @Controller('properties')
@@ -9,10 +9,11 @@ export class PropertyRetrieverController {
     private readonly propertyRetrieverService: PropertyRetrieverService
   ) {}
 
-  @Get()
+  @Post()
   public find(
-    @Query() queryDto: RetrievePropertyQueryDto
+    @Body() requestDto: RetrievePropertyRequestDto
   ): Promise<RetrievePropertyResponseDto> {
-    return this.propertyRetrieverService.get(queryDto);
+    console.log(requestDto);
+    return this.propertyRetrieverService.get(requestDto);
   }
 }
