@@ -1,4 +1,13 @@
 .container {
-  display: block;
+  background-color: aliceblue;
+  display: flex;
   height: 100%;
+
+  .filters {
+    width: 300px;
+  }
+
+  .list {
+    flex: 1;
+  }
 }

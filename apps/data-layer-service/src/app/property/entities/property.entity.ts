@@ -1,4 +1,12 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { PropertyImage } from './property-image.entity';
 
 @Entity('Property')
 export class Property {
@@ -13,4 +21,7 @@ export class Property {
 
   @UpdateDateColumn({ type: 'timestamp' })
   public updatedAt: Date;
+
+  @OneToMany(() => PropertyImage, image => image.property, { cascade: true })
+  public images: PropertyImage[];
 }

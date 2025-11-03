@@ -13,7 +13,6 @@ export class PropertyRetrieverController {
   public find(
     @Body() requestDto: RetrievePropertyRequestDto
   ): Promise<RetrievePropertyResponseDto> {
-    console.log(requestDto);
     return this.propertyRetrieverService.get(requestDto);
   }
 }

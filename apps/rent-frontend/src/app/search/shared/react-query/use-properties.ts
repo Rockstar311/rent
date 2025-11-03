@@ -3,14 +3,18 @@ import { RetrievePropertyResponseDto } from '../dtos/retrieve-property-response.
 import { PropertiesRetrieverClient } from '../clients/properties-retriever.client';
 import { RetrievePropertyResponseMetaDto } from '../dtos/retrieve-property-response-meta.dto';
 import { RetrievePropertyResponseLinksDto } from '../dtos/retrieve-property-response-links.dto';
-import { useFiltersStore } from '../store/use-filters-store';
+import { selectRequestDto, useFiltersStore } from '../store/use-filters-store';
+import { useShallow } from 'zustand/shallow';
+
+export const USE_PROPERTIES_KEY = 'properties';
 
 export const useProperties = () => {
-  const requestDto = useFiltersStore((state) => state.selectRequestDto);
+  const requestDto = useFiltersStore(useShallow(selectRequestDto));
 
   return useQuery<RetrievePropertyResponseDto, Error>({
-    queryKey: ['properties', requestDto()],
-    queryFn: () => PropertiesRetrieverClient.get(requestDto()),
+    queryKey: [USE_PROPERTIES_KEY, requestDto],
+    queryFn: () => PropertiesRetrieverClient.get(requestDto),
+    initialDataUpdatedAt: 0,
     initialData: {
       items: [],
       meta: new RetrievePropertyResponseMetaDto(),

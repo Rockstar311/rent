@@ -1,14 +1,18 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
 .container {
   align-items: center;
-  border-top: 1px solid #adadad;
+  background-color: white;
+  border: 1px solid #adadad;
+  border-radius: 10px;
   display: flex;
   height: 100%;
   padding: 0 20px;
+
+  .label {
+    padding-left: 5px;
+  }
+
+  .disabled {
+    cursor: not-allowed;
+    opacity: .5;
+  }
 }

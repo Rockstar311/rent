@@ -24,6 +24,7 @@ export class PropertyRetrieverService {
 
     const queryBuilder = specification.toQueryBuilder(
       this.propertyRepository.createQueryBuilder('property')
+        .leftJoinAndSelect('property.images', 'images')
     );
 
     const result = await paginate<Property>(queryBuilder, requestDto);

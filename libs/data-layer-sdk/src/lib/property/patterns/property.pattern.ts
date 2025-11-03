@@ -1,3 +1,4 @@
 export enum PropertyPattern {
-  GetProperties= 'get-properties'
+  GetProperties= 'get-properties',
+  UploadPropertyImages = 'upload-property-images'
 }

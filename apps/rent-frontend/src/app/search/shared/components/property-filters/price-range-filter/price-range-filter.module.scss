@@ -1,0 +1,22 @@
+
+.container {
+  display: flex;
+  gap: 10px;
+
+  .input {
+    background-color: aliceblue;
+    border: 1px solid #adadad;
+    border-radius: 10px;
+    padding: 5px 10px;
+    width: 100%;
+
+    &.error,
+    &.error:focus {
+      border: 1px solid red;
+    }
+
+    &:focus {
+      border: 1px solid cornflowerblue;
+    }
+  }
+}

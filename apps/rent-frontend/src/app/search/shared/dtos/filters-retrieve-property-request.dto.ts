@@ -3,8 +3,8 @@ import { FiltersRetrievePropertyRequestContract } from '@rent/data-layer-sdk/pro
 export class FiltersRetrievePropertyRequestDto
   implements FiltersRetrievePropertyRequestContract
 {
-  public minPrice?: number;
-  public maxPrice?: number;
-  public minCreatedAt?: Date;
-  public maxCreatedAt?: Date;
+  constructor(public minPrice?: number,
+              public maxPrice?: number,
+              public minCreatedAt?: Date,
+              public maxCreatedAt?: Date) {}
 }

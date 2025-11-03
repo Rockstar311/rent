@@ -33,5 +33,16 @@ services:
     volumes:
       - rent-db-data:/var/lib/postgresql/data
 
+  minio:
+    image: minio/minio
+    container_name: minio
+    ports:
+      - "9009:9000"  # host 9009 → container 9000 (S3 API)
+      - "9008:9001"  # host 9008 → container 9001 (console)
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+    command: server /data --console-address ":9001"
+
 volumes:
   rent-db-data: null
